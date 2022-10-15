@@ -88,6 +88,17 @@ body {
   height: 30px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
+  justify-content: space-between;
+}
+
+.todoList__option {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.edit, .trash {
+  cursor: pointer;
 }
 
 .footer__clearBtn {
