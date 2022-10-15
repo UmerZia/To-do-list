@@ -1,3 +1,4 @@
+import _, { xor } from 'lodash'
 import './styles.css'
 const listContainer = document.querySelector('.todoList')
 const newList = document.getElementById("inputField")
@@ -5,7 +6,13 @@ const addBtn = document.getElementsByClassName("wrapper__addBtn")[0]
 const LOCAL_STORAGE_LIST_KEY = 'task.listOfTodo'
 let listOfTodo = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
 const listOfTodoListItem = document.querySelectorAll("todoList__item-name")
-
+const BtnClear = document.getElementById("BtnClear")
+import listElement from "./modules/listitem"
+BtnClear.addEventListener("click", e=>{
+  listOfTodo=listOfTodo.filter(todo=> !todo.isCompleted);
+  
+  saveAndRender();
+})
 //Reset Indexes
 const resetIndex = () => {
   let index = 1;
@@ -29,9 +36,7 @@ window.deleteElement = (todoId) => {
 
 //Edit Element
 window.editElement = (todoId) => {
-  listOfTodo.forEach(todo => {
-    todo.isEditing = false
-  })
+  resetEditing();
   listOfTodo.find(todo => todo.id === todoId).isEditing=true
   saveAndRender()
 }
@@ -50,21 +55,28 @@ listOfTodoListItem.forEach((list,index) => {
     }
   })
 })
-
-
+window.finishEditingElement= ()=>
+{
+  resetEditing();
+  saveAndRender();
+}
+//Reset Editing
+const resetEditing=()=>{
+  listOfTodo.forEach(todo => {
+    todo.isEditing = false
+  })
+}
+//Mark Completed/UnCompleted
+window.ToggleCompleted =(todoId)=> {
+  const Completed=document.getElementById(`cb-${todoId}`).checked;
+  listOfTodo.find(todo => todo.id === todoId).isCompleted = Completed;
+  saveAndRender();
+}
 //Render item on screen
 const render = () => {
   clearList(listContainer)
   listOfTodo.forEach((todo) => {
-    const listElement = `<li class="todoList__item" id="${todo.id}">
-<input class="todoList__item-name" type="text" id="io-${todo.id}" value="${todo.task}" ${todo.isEditing?"":"disabled"} 
-onchange="updateElement(${todo.id})" />
-<div class="todoList__option">
-            <i class="trash fas fa-trash" onclick="deleteElement(${todo.id})"></i>
-            <i class="edit fas fa-edit" onclick="editElement(${todo.id})"></i>
-        </div>
-</li>`
-    listContainer.insertAdjacentHTML('beforeend', listElement)
+    listContainer.insertAdjacentHTML('beforeend', listElement(todo))
   })
 }
 
@@ -105,7 +117,7 @@ const clearList = (list) => {
 
 //Create Task
 const createList = (name) => {
-  return {id: (listOfTodo[listOfTodo.length-1]?.id+1)??1, task:name, status: false, isEditing: false}
+  return {id: (listOfTodo[listOfTodo.length-1]?.id+1)??1, task:name, status: false, isEditing: false, isCompleted:false}
 }
 
 render()

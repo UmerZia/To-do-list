@@ -42,6 +42,10 @@ body {
   width: 100%;
   margin: 10px 0;
 }
+.ibCompleted
+{
+  text-decoration: line-through;
+}
 
 .wrapper__inputField {
   height: 100%;
@@ -72,7 +76,19 @@ body {
   border-radius: 3px;
   margin-left: 5px;
 }
-
+.todoList__item-name {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  justify-content: space-between;
+  outline: none !important;
+  border: none;
+}
 .todoList {
   display: flex;
   flex-direction: column;
@@ -91,13 +107,18 @@ body {
   justify-content: space-between;
 }
 
+.checkbox {
+  margin: 5px;
+}
 .todoList__option {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
-
-.edit, .trash {
+.okhidden {
+  display: none;
+}
+.edit, .trash, .ok {
   cursor: pointer;
 }
 
