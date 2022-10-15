@@ -42,8 +42,8 @@ body {
   width: 100%;
   margin: 10px 0;
 }
-.ibCompleted
-{
+
+.ibCompleted {
   text-decoration: line-through;
 }
 
@@ -76,6 +76,7 @@ body {
   border-radius: 3px;
   margin-left: 5px;
 }
+
 .todoList__item-name {
   display: flex;
   align-items: center;
@@ -89,6 +90,7 @@ body {
   outline: none !important;
   border: none;
 }
+
 .todoList {
   display: flex;
   flex-direction: column;
@@ -110,15 +112,20 @@ body {
 .checkbox {
   margin: 5px;
 }
+
 .todoList__option {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
+
 .okhidden {
   display: none;
 }
-.edit, .trash, .ok {
+
+.edit,
+.trash,
+.ok {
   cursor: pointer;
 }
 
