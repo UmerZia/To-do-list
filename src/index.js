@@ -4,7 +4,7 @@ const newList = document.getElementById("inputField")
 const addBtn = document.getElementsByClassName("wrapper__addBtn")[0]
 const LOCAL_STORAGE_LIST_KEY = 'task.listOfTodo'
 let listOfTodo = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
-const listOfTrash = document.getElementsByClassName("trash")
+const listOfTodoListItem = document.querySelectorAll("todoList__item-name")
 
 //Reset Indexes
 const resetIndex = () => {
@@ -27,14 +27,41 @@ window.deleteElement = (todoId) => {
   saveAndRender()
 }
 
+//Edit Element
+window.editElement = (todoId) => {
+  listOfTodo.forEach(todo => {
+    todo.isEditing = false
+  })
+  listOfTodo.find(todo => todo.id === todoId).isEditing=true
+  saveAndRender()
+}
+
+//OnChange
+window.updateElement = (todoId) => {
+  const task = document.getElementById(`io-${todoId}`).value
+  listOfTodo.find(todo => todo.id === todoId).task = task;
+}
+
+//Enter value on enter key
+listOfTodoListItem.forEach((list,index) => {
+  list.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      console.log(event)
+    }
+  })
+})
+
+
 //Render item on screen
 const render = () => {
   clearList(listContainer)
   listOfTodo.forEach((todo) => {
-    const listElement = `<li class="todoList__item" id="${todo.id}">${todo.task}
+    const listElement = `<li class="todoList__item" id="${todo.id}">
+<input class="todoList__item-name" type="text" id="io-${todo.id}" value="${todo.task}" ${todo.isEditing?"":"disabled"} 
+onchange="updateElement(${todo.id})" />
 <div class="todoList__option">
-            <i class="trash fas fa-trash" id="tr-${todo.id}" onclick="deleteElement(${todo.id})"></i>
-            <i class="edit fas fa-edit"></i>
+            <i class="trash fas fa-trash" onclick="deleteElement(${todo.id})"></i>
+            <i class="edit fas fa-edit" onclick="editElement(${todo.id})"></i>
         </div>
 </li>`
     listContainer.insertAdjacentHTML('beforeend', listElement)
@@ -78,7 +105,7 @@ const clearList = (list) => {
 
 //Create Task
 const createList = (name) => {
-  return {id: (listOfTodo[listOfTodo.length-1]?.id+1)??1, task:name, status: "false"}
+  return {id: (listOfTodo[listOfTodo.length-1]?.id+1)??1, task:name, status: false, isEditing: false}
 }
 
 render()
