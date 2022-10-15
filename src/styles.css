@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
 
 root {
-  --off-white: #E1D9D1;
+  --off-white: #e1d9d1;
 }
 
 * {
@@ -65,7 +65,7 @@ body {
   height: 100%;
   border: none;
   outline: none;
-  background-color: #00ccff;
+  background-color: #0cf;
   color: #fff;
   font-size: 22px;
   cursor: pointer;
