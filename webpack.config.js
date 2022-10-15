@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: {
     bundle: path.resolve(__dirname, "src/index.js"),
   },
@@ -12,9 +12,9 @@ module.exports = {
   },
   devServer: {
     static: {
-        directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(__dirname, "dist"),
     },
-    port: 3000,
+    port: 8081,
     open: true,
     hot: true,
     compress: true,
@@ -40,6 +40,10 @@ module.exports = {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: "babel-loader",
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
       },
     ],
   },
