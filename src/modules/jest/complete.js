@@ -1,4 +1,4 @@
-let listOfTodo = [
+const listOfTodo = [
   {
     id: 1,
     task: 'Complete week 3',
@@ -22,13 +22,14 @@ let listOfTodo = [
   },
 ];
 
-// Delete Element
-const deleteElement = (todoId) => {
-  listOfTodo = listOfTodo.filter((todo) => todo.id !== todoId);
+// Mark Completed/UnCompleted
+const ToggleCompleted = (todoId, Completed) => {
+  listOfTodo.find((todo) => todo.id === todoId).isCompleted = Completed;
+  return listOfTodo;
 };
 
 // Getter
 const getData = () => listOfTodo;
 
-module.exports = deleteElement;
+module.exports = ToggleCompleted;
 module.exports = getData;
