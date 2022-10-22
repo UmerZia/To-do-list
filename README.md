@@ -11,6 +11,7 @@ To-Do List is a simple yet very help project to keep track of your daily/weekly 
 - [x] Add List structure of To-Do-List.
 - [x] Make the list Interactive.
 - [x] Implement add and remove items functionality.
+- [x] Test JS methods using JEST.
 
 ## Built With
 
@@ -41,6 +42,14 @@ To-Do List is a simple yet very help project to keep track of your daily/weekly 
 #### Umer Zia
 
 [GitHub](https://github.com/UmerZia) | [Twitter](https://twitter.com/InfinusDesign) | [LinkedIn](https://linkedin.com/in/umer-zia-30906a183/)
+
+#### Rabecca Nabwire
+
+[GitHub](https://github.com/Becky449) | [LinkedIn](https://www.linkedin.com/in/rabeccanabwire/)
+
+#### Emmanuella Ngufor
+
+[GitHub](https://github.com/Ngufor-emmanuella) | [Twitter](https://twitter.com/Ngufor-emmanuella)
 
 ## 🤝 Contributing
 
