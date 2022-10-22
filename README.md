@@ -11,6 +11,7 @@ To-Do List is a simple yet very help project to keep track of your daily/weekly 
 - [x] Add List structure of To-Do-List.
 - [x] Make the list Interactive.
 - [x] Implement add and remove items functionality.
+- [x] Test JS methods using JEST.
 
 ## Built With
 
