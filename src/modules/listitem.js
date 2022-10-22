@@ -1,4 +1,5 @@
-const listElement = (todo) => `<li class="todoList__item" id="${todo.id}"><input class="checkbox" type="checkbox" id=cb-${todo.id} onChange="ToggleCompleted(${todo.id})"  ${todo.isCompleted ? 'checked' : ''}  />
+const listElement = (todo) => `<li class="todoList__item" id="${todo.id}">
+<input class="checkbox" type="checkbox" id=cb-${todo.id} onChange="ToggleCompleted(${todo.id})"  ${todo.isCompleted ? 'checked' : ''}  />
 <input class="todoList__item-name ${todo.isCompleted ? 'ibCompleted' : ''}" type="text" id="io-${todo.id}" value="${todo.task}" ${todo.isEditing ? '' : 'disabled'} 
 onchange="updateElement(${todo.id})" />
 <div class="todoList__option">

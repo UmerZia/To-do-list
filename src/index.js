@@ -93,6 +93,7 @@ window.finishEditingElement = () => {
   resetEditing();
   saveAndRender();
 };
+
 // Mark Completed/UnCompleted
 window.ToggleCompleted = (todoId) => {
   const Completed = document.getElementById(`cb-${todoId}`).checked;
@@ -116,6 +117,5 @@ render();
 
 BtnClear.addEventListener('click', () => {
   listOfTodo = listOfTodo.filter((todo) => !todo.isCompleted);
-
   saveAndRender();
 });
